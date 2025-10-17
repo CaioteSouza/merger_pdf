@@ -16,9 +16,8 @@ Criar uma ferramenta local simples para unir PDFs que evoluiu para uma aplicaç�
 
 ## 📅 **Linha do Tempo de Commits**
 
-### 🚀 **Fase 1: Criação Inicial (Dezembro 2024)**
+### 🚀 **Fase 1: Criação Inicial**
 
-#### **Commit: "Initial PDF merger implementation"**
 ```
 🎯 Objetivo: Criar funcionalidade básica de união de PDFs
 📁 Arquivos criados: app.py, requirements.txt, templates básicos
@@ -42,9 +41,8 @@ Criar uma ferramenta local simples para unir PDFs que evoluiu para uma aplicaç�
 
 ---
 
-### 🎨 **Fase 2: Melhorias de Interface (Janeiro 2025)**
+### 🎨 **Fase 2: Melhorias de Interface**
 
-#### **Commit: "Add modern UI with Bootstrap and custom styling"**
 ```
 🎯 Objetivo: Modernizar interface e adicionar identidade visual
 📁 Arquivos: style.css, logo.png, templates atualizados
@@ -70,9 +68,8 @@ Criar uma ferramenta local simples para unir PDFs que evoluiu para uma aplicaç�
 
 ---
 
-### ⚡ **Fase 3: Otimização e Segurança (Janeiro 2025)**
+### ⚡ **Fase 3: Otimização e Segurança**
 
-#### **Commit: "Upgrade to pypdf 6.1.1 and add security validations"**
 ```
 🎯 Objetivo: Melhorar performance e adicionar segurança
 📁 Arquivos: requirements.txt, app.py (validações)
@@ -98,9 +95,8 @@ Criar uma ferramenta local simples para unir PDFs que evoluiu para uma aplicaç�
 
 ---
 
-### 🚀 **Fase 4: Deploy e Produção (Janeiro 2025)**
+### 🚀 **Fase 4: Deploy e Produção**
 
-#### **Commit: "Add production deployment scripts for Ubuntu"**
 ```
 🎯 Objetivo: Criar sistema de deploy profissional
 📁 Arquivos: deployment/, scripts/, gunicorn.conf.py
@@ -126,9 +122,8 @@ Criar uma ferramenta local simples para unir PDFs que evoluiu para uma aplicaç�
 
 ---
 
-### 🐛 **Fase 5: Correção de Navegação (Janeiro 2025)**
+### 🐛 **Fase 5: Correção de Navegação**
 
-#### **Commit: "Fix navigation issues after PDF merge"**
 ```
 🎯 Objetivo: Resolver problemas de redirecionamento
 📁 Arquivos: app.py (rotas), templates (navegação)
@@ -153,9 +148,8 @@ Criar uma ferramenta local simples para unir PDFs que evoluiu para uma aplicaç�
 
 ---
 
-### 📁 **Fase 6: Organização do Projeto (Janeiro 2025)**
+### 📁 **Fase 6: Organização do Projeto**
 
-#### **Commit: "Reorganize project structure into logical directories"**
 ```
 🎯 Objetivo: Organizar arquivos em estrutura profissional
 📁 Arquivos: docs/, scripts/, deployment/
@@ -181,9 +175,8 @@ Criar uma ferramenta local simples para unir PDFs que evoluiu para uma aplicaç�
 
 ---
 
-### 🔥 **Fase 7: Firewall e Acesso Externo (Janeiro 2025)**
+### 🔥 **Fase 7: Firewall e Acesso Externo**
 
-#### **Commit: "Configure UFW firewall with port 8080 access"**
 ```
 🎯 Objetivo: Resolver acesso externo bloqueado
 📁 Arquivos: deployment/install.sh (firewall)
@@ -208,9 +201,8 @@ Criar uma ferramenta local simples para unir PDFs que evoluiu para uma aplicaç�
 
 ---
 
-### 🧹 **Fase 8: Limpeza e Otimização (Janeiro 2025)**
+### 🧹 **Fase 8: Limpeza e Otimização**
 
-#### **Commit: "Remove unnecessary files and optimize project structure"**
 ```
 🎯 Objetivo: Limpar arquivos desnecessários
 📁 Arquivos removidos: start.bat, __pycache__, .vscode/, etc.
@@ -441,31 +433,6 @@ Deploy automatizado funciona perfeitamente em Ubuntu 18.04, 20.04 e 22.04.
 
 ---
 
-## 📊 **Métricas de Desenvolvimento**
-
-### ⏱️ **Tempo de Desenvolvimento**
-- **Versão 1.0**: 2 semanas (funcionalidade básica)
-- **Versão 2.0**: 3 semanas (produção + docs)
-- **Total**: 5 semanas de desenvolvimento
-
-### 📈 **Evolução do Código**
-- **Linhas de código**: 800 → 2,500+ (3x crescimento)
-- **Arquivos**: 8 → 25+ (organização modular)
-- **Funcionalidades**: 8 → 15+ (quase dobrou)
-
-### 🐛 **Bugs e Correções**
-- **Total de bugs**: 12 identificados
-- **Bugs críticos**: 3 (memory leak, firewall, navegação)
-- **Taxa de correção**: 100% (todos resolvidos)
-- **Regressões**: 0 (testes abrangentes)
-
-### 📚 **Documentação**
-- **README.md**: 1 → 6 versões (constante melhoria)
-- **Documentos especializados**: 0 → 5 (cobertura completa)
-- **Comentários no código**: 30% → 80% cobertura
-
----
-
 ## 🎓 **Lições Aprendidas**
 
 ### ✅ **O que Funcionou Bem**
@@ -516,19 +483,19 @@ Deploy automatizado funciona perfeitamente em Ubuntu 18.04, 20.04 e 22.04.
 
 ## 🔮 **Roadmap Técnico**
 
-### 📅 **Versão 2.1 (Próximos 3 meses)**
+### 📅 **Versão 2.1**
 - [ ] **Testes automatizados**: pytest + coverage 90%+
 - [ ] **API REST**: Endpoints JSON para integração
 - [ ] **Background tasks**: Celery para processamento
 - [ ] **Compression**: Otimização automática de PDFs
 
-### 📅 **Versão 2.2 (6 meses)**
+### 📅 **Versão 2.2**
 - [ ] **Multi-tenancy**: Isolamento por usuário
 - [ ] **Cloud storage**: S3 integration
 - [ ] **Advanced monitoring**: Prometheus + Grafana
 - [ ] **CI/CD**: GitHub Actions completo
 
-### 📅 **Versão 3.0 (1 ano)**
+### 📅 **Versão 3.0**
 - [ ] **Microservices**: Decomposição em serviços
 - [ ] **Kubernetes**: Orquestração cloud-native
 - [ ] **AI features**: OCR e análise de conteúdo
@@ -588,7 +555,7 @@ cp /home/pdfmerger/merger_pdf/pdf_merger.db ~/backup_$(date +%Y%m%d).db
 1. **Funcionalidade 100%**: Todos os requisitos atendidos
 2. **Deploy automatizado**: Zero intervenção manual
 3. **Performance excelente**: Suporta 50+ usuários
-4. **Documentação completa**: 5 guias especializados
+4. **Documentação completa**: 3 guias especializados
 5. **Código limpo**: Organização profissional
 
 ### 💡 **Principais Aprendizados**
@@ -610,13 +577,5 @@ cp /home/pdfmerger/merger_pdf/pdf_merger.db ~/backup_$(date +%Y%m%d).db
 <div align="center">
 
 ## 🎉 **Projeto Concluído com Sucesso!**
-
-### *De ideia simples a aplicação profissional*
-
-[![Commits](https://img.shields.io/badge/Commits-50+-brightgreen.svg)]()
-[![Issues](https://img.shields.io/badge/Issues-0-green.svg)]()
-[![Docs](https://img.shields.io/badge/Documentação-Completa-blue.svg)]()
-
-**5 semanas de desenvolvimento intenso e aprendizado contínuo**
 
 </div>
