@@ -121,12 +121,10 @@ curl -sSL https://raw.githubusercontent.com/CaioteSouza/merger_pdf/master/deploy
 │   ├── 🏠 index.html           # Página inicial (upload)
 │   └── 📊 history.html         # Histórico de PDFs
 ├── 
-├── 📁 docs/                    # Documentação completa
-│   ├── 📋 RESUMO_EXECUTIVO.md  # Visão executiva
-│   ├── 🚀 GUIA_RAPIDO.md       # Manual do usuário
-│   ├── 📝 CHANGELOG.md         # Histórico versões
-│   ├── 🤝 CONTRIBUTING.md      # Guia contribuição
-│   └── ✅ VERIFICACAO_FINAL.md # Auditoria projeto
+├── 📁 docs/                          # Documentação completa
+│   ├── 🚀 MANUAL_USUARIO.md          # Guia de uso da ferramenta
+│   ├── 📝 DIARIO_DESENVOLVIMENTO.md  # Histórico técnico e decisões
+│   └── ✅ DEPLOY_UBUNTU.md           # Deploy completo em Ubuntu
 ├── 
 ├── 📁 scripts/                 # Scripts de correção
 │   ├── 🔄 complete-reinstall.sh # Reinstalação total
