@@ -6,7 +6,7 @@
 echo "🔧 Corrigindo problemas de navegação..."
 echo "======================================"
 
-APP_DIR="/opt/pdf-merger"
+APP_DIR="/var/www/merger_pdf"
 cd $APP_DIR
 
 # Backup do app.py atual

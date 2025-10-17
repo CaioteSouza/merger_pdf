@@ -100,7 +100,7 @@ fi
 # 4. Verificar permissões
 echo ""
 echo "4. Verificando permissões..."
-dirs=("/opt/pdf-merger/uploads" "/opt/pdf-merger/merged_pdfs" "/var/log/pdf-merger")
+dirs=("/var/www/merger_pdf/uploads" "/var/www/merger_pdf/merged_pdfs" "/var/log/pdf-merger")
 for dir in "${dirs[@]}"; do
     if [ -d "$dir" ]; then
         owner=$(stat -c "%U" "$dir")

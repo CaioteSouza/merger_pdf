@@ -41,7 +41,7 @@ if ! id "pdfmerger" &>/dev/null; then
 fi
 
 # Definir diretórios
-APP_DIR="/opt/pdf-merger"
+APP_DIR="/var/www/merger_pdf"
 LOG_DIR="/var/log/pdf-merger"
 BACKUP_DIR="/var/backups/pdf-merger"
 
@@ -107,8 +107,8 @@ chmod 644 $APP_DIR/pdf_merger.db
 echo -e "${YELLOW}⚙️  Configurando Supervisor...${NC}"
 cat > /etc/supervisor/conf.d/pdf-merger.conf << EOF
 [program:pdf-merger]
-command=/opt/pdf-merger-venv/bin/gunicorn --config /opt/pdf-merger/gunicorn.conf.py wsgi:app
-directory=/opt/pdf-merger
+command=/opt/pdf-merger-venv/bin/gunicorn --config /var/www/merger_pdf/deployment/gunicorn.conf.py deployment.wsgi:app
+directory=/var/www/merger_pdf
 user=pdfmerger
 autostart=true
 autorestart=true
@@ -150,7 +150,7 @@ server {
     
     # Servir arquivos estáticos diretamente pelo Nginx (mais eficiente)
     location /static/ {
-        alias /opt/pdf-merger/static/;
+        alias /var/www/merger_pdf/static/;
         expires 1d;
         add_header Cache-Control "public, immutable";
     }

@@ -4,7 +4,7 @@
 
 echo "🔧 Corrigindo app.py para produção..."
 
-APP_DIR="/opt/pdf-merger"
+APP_DIR="/var/www/merger_pdf"
 cd $APP_DIR
 
 # Backup do arquivo original
