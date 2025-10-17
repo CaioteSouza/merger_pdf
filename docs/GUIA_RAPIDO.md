@@ -1,54 +1,118 @@
-# 📄 PDF Merger - Guia de Uso Rápido
+# 🔄 PDF Merger - Guia Completo do Usuário
 
-## 🚀 Como Iniciar
+<div align="center">
 
-### Método Simples (Recomendado)
-1. Execute o arquivo `start.bat`
+![PDF Merger](https://img.shields.io/badge/PDF_Merger-v2.0-brightgreen.svg?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Active-green.svg?style=for-the-badge)
+![Platform](https://img.shields.io/badge/Platform-Web-blue.svg?style=for-the-badge)
+
+**A ferramenta definitiva para união de PDFs**
+
+</div>
+
+---
+
+## 🎯 O que é o PDF Merger?
+
+O **PDF Merger** é uma **aplicação web profissional** que permite unir múltiplos arquivos PDF em um único documento, com interface moderna e recursos avançados de gerenciamento.
+
+### ✨ **Principais Vantagens**
+- 🚀 **Processamento local**: Seus arquivos não saem do seu computador
+- 💾 **Histórico permanente**: Todos os PDFs criados ficam salvos
+- 📊 **Estatísticas detalhadas**: Acompanhe sua produtividade
+- 🎨 **Interface moderna**: Design responsivo e intuitivo
+- 🔒 **100% seguro**: Validação rigorosa e limpeza automática
+
+---
+
+## 🚀 Como Iniciar a Aplicação
+
+### 💻 **Método Simples (Windows)**
+1. Execute o arquivo **`start.bat`**
 2. Aguarde a instalação das dependências (apenas na primeira vez)
 3. A aplicação abrirá automaticamente no navegador em `http://localhost:5000`
 
-### Método Manual
+### 🐧 **Método Manual (Qualquer SO)**
 ```bash
+# Instalar dependências
 pip install -r requirements.txt
+
+# Executar aplicação
 python app.py
 ```
 
-## 📱 Como Usar a Aplicação
+### 🌐 **Deploy em Produção (Ubuntu)**
+```bash
+# Download e instalação automática
+curl -sSL https://raw.githubusercontent.com/user/repo/master/deployment/install.sh | sudo bash
+```
 
-### 1. 📄 Unir PDFs
-1. Acesse a página principal
-2. **Arraste e solte** os arquivos PDF ou clique em "Selecionar Arquivos"
-3. Selecione 2 ou mais arquivos PDF
-4. Visualize a lista de arquivos selecionados
-5. Clique em "Unir PDFs" (botão verde claro)
-6. O arquivo será processado e você será redirecionado ao histórico
+---
 
-### 2. 📊 Visualizar Histórico
-1. Clique em "Histórico" no menu superior
-2. Veja todos os PDFs unidos anteriormente com detalhes:
-   - Nome do arquivo final
-   - Arquivos originais utilizados
-   - Número de páginas
-   - Tamanho do arquivo
-   - Data de criação
-3. **Download**: Clique no botão verde para baixar
-4. **Excluir**: Clique no botão vermelho para remover (com confirmação)
+## 📱 Tutorial Completo de Uso
 
-### 3. 📈 Estatísticas em Tempo Real
-Na página inicial e no histórico, veja:
-- **Total de PDFs unidos** no sistema
-- **Número total de páginas** processadas
-- **Tamanho total** dos arquivos
-- **Média de páginas** por PDF
+### 1️⃣ **Upload e União de PDFs**
 
-### 4. 🧭 Navegação
-- **Logo centralizado** no topo para identidade visual
-- **Menu superior** com links para "Início" e "Histórico"
-- **Design responsivo** que funciona em celular, tablet e desktop
+#### 🖱️ **Método 1: Drag & Drop (Recomendado)**
+1. **Abra** a página principal
+2. **Arraste** os arquivos PDF diretamente para a área marcada
+3. **Solte** os arquivos (mínimo 2 PDFs)
+4. **Confirme** a lista de arquivos selecionados
+5. **Clique** em "Unir PDFs" (botão verde)
 
-## ✅ Funcionalidades Principais
+#### 📁 **Método 2: Seleção Manual**
+1. **Clique** em "Selecionar Arquivos"
+2. **Navegue** até a pasta dos PDFs
+3. **Selecione** múltiplos arquivos usando:
+   - `Ctrl + Clique` (Windows/Linux)
+   - `Cmd + Clique` (macOS)
+4. **Confirme** e clique em "Unir PDFs"
 
-- ✅ **Interface Drag & Drop**: Arraste arquivos diretamente para a área de upload
+#### ⚡ **Processo de União**
+```
+📄 Validação → 🔄 Processamento → ✅ Conclusão → 📊 Redirecionamento
+```
+
+### 2️⃣ **Gerenciamento de Histórico**
+
+#### 📊 **Acessando o Histórico**
+1. **Clique** em "Histórico" no menu superior
+2. **Visualize** todos os PDFs unidos com detalhes completos:
+
+| Campo | Descrição | Exemplo |
+|-------|-----------|---------|
+| **📄 Nome** | Arquivo final gerado | `documento_unido_20250115.pdf` |
+| **📋 Originais** | Lista de arquivos fonte | `arquivo1.pdf, arquivo2.pdf` |
+| **📊 Páginas** | Total de páginas | `42 páginas` |
+| **💽 Tamanho** | Tamanho do arquivo | `2.5 MB` |
+| **📅 Data** | Timestamp da criação | `15/01/2025 14:30` |
+
+#### ⚡ **Ações Disponíveis**
+- **💾 Download**: Baixar PDF novamente (botão verde)
+- **🗑️ Excluir**: Remover do histórico com confirmação (botão vermelho)
+
+### 3️⃣ **Dashboard de Estatísticas**
+
+#### 📈 **Métricas em Tempo Real**
+Na página inicial e histórico, veja cards com:
+
+```
+📄 Total de PDFs Unidos      📊 Total de Páginas
+   ✨ 1,247 documentos          ✨ 28,451 páginas
+
+💽 Volume Total              ⚖️ Média por PDF  
+   ✨ 2.8 GB processados        ✨ 23 páginas/PDF
+```
+
+### 4️⃣ **Sistema de Navegação**
+
+#### 🧭 **Elementos da Interface**
+- **🏠 Logo Centralizado**: Identidade visual no header
+- **📋 Menu Superior**: Links diretos para "Início" e "Histórico"
+- **📱 Design Responsivo**: Funciona perfeitamente em:
+  - 💻 Desktop (1920x1080+)
+  - 📱 Tablet (768x1024)
+  - 📲 Mobile (375x667)
 - ✅ **Múltiplos PDFs**: Une 2 ou mais arquivos em ordem específica
 - ✅ **Qualquer tamanho**: PDFs com qualquer número de páginas
 - ✅ **Histórico completo**: Todos os arquivos são salvos no banco de dados

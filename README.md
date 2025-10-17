@@ -1,204 +1,387 @@
-# 📄 PDF Merger - Ferramenta para Unir PDFs
+# 📄 PDF Merger - Ferramenta Profissional para Unir PDFs
 
-Uma ferramenta local completa para unir múltiplos arquivos PDF em um único documento, com interface web intuitiva, banco de dados para histórico e design moderno personalizado.
+> Uma aplicação web completa e moderna para unir múltiplos arquivos PDF, com interface intuitiva, histórico completo e sistema de deploy em produção.
 
-## ✨ Funcionalidades
+[![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://python.org)
+[![Flask](https://img.shields.io/badge/Flask-3.0.0-green.svg)](https://flask.palletsprojects.com)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-- ✅ **União de múltiplos PDFs**: Suporte a 2 ou mais arquivos PDF
-- ✅ **Interface web moderna**: Design responsivo com cores personalizadas
-- ✅ **Drag & Drop**: Arraste e solte arquivos diretamente na interface
-- ✅ **Banco de dados**: SQLite para manter histórico dos PDFs unidos
-- ✅ **Estatísticas em tempo real**: Visualização de dados sobre os arquivos processados
-- ✅ **Download e exclusão**: Gerenciamento completo dos arquivos
-- ✅ **Logo personalizado**: Logotipo centralizado na interface
-- ✅ **CSS organizado**: Estilos estruturados em arquivo separado
-- ✅ **Design intuitivo**: Cores e layout otimizados para usabilidade
+## ✨ Funcionalidades Principais
 
-## 🛠️ Tecnologias Utilizadas
+### 🎯 Core Features
+- ✅ **União Inteligente**: Combina 2+ PDFs mantendo qualidade e formatação
+- ✅ **Interface Drag & Drop**: Arrastar e soltar arquivos intuitivamente
+- ✅ **Histórico Completo**: Banco SQLite com todos os PDFs processados
+- ✅ **Estatísticas Live**: Métricas em tempo real do uso da aplicação
+- ✅ **Design Responsivo**: Interface otimizada para desktop, tablet e mobile
 
-### Backend (Python)
-- **Flask 3.0.0**: Framework web para a aplicação
-- **pypdf 6.1.1**: Biblioteca moderna para manipulação de PDFs (sucessora do PyPDF2)
-- **Werkzeug 3.0.1**: Utilitários para aplicações web
+### 🛡️ Segurança & Performance
+- ✅ **Validação Rigorosa**: Apenas arquivos PDF válidos são aceitos
+- ✅ **Limpeza Automática**: Remove arquivos temporários após processamento
+- ✅ **Configuração Flexível**: Ajustes de tamanho, timeout e limites
+- ✅ **Deploy em Produção**: Scripts completos para Ubuntu Server
+
+### 🎨 Interface Moderna
+- ✅ **Logo Personalizado**: Identidade visual centralizada
+- ✅ **Cores Profissionais**: Paleta verde harmoniosa (#155229, #b9f6ca)
+- ✅ **Bootstrap 5.3**: Framework CSS moderno e responsivo
+- ✅ **Font Awesome 6.0**: Ícones vetoriais profissionais
+
+## 🛠️ Stack Tecnológico
+
+### Backend
+```
+Flask 3.0.0      -> Framework web leve e poderoso
+pypdf 6.1.1      -> Biblioteca moderna de PDF (sucessora PyPDF2)
+SQLite3          -> Banco de dados embutido
+Werkzeug 3.0.1   -> Utilities WSGI
+```
 
 ### Frontend
-- **Bootstrap 5.3.0**: Framework CSS para interface responsiva
-- **Font Awesome 6.0.0**: Ícones vetoriais
-- **CSS3 personalizado**: Estilos organizados e modulares
-- **JavaScript Vanilla**: Funcionalidades interativas (drag & drop, validações)
+```
+Bootstrap 5.3.0  -> Framework CSS responsivo
+Font Awesome 6.0 -> Biblioteca de ícones
+JavaScript ES6   -> Funcionalidades interativas
+CSS3 Modular     -> Estilos organizados e customizados
+```
 
-### Banco de Dados
-- **SQLite3**: Banco de dados embutido do Python
+### Deploy & Produção
+```
+Gunicorn         -> Servidor WSGI para produção
+Nginx            -> Proxy reverso e arquivos estáticos
+Supervisor       -> Gerenciamento de processos
+Ubuntu Server    -> Sistema operacional recomendado
+```
 
-## 🚀 Instalação e Uso
+## 🚀 Quick Start
 
-### Opção 1: Executar com arquivo .bat (Recomendado)
+### � Desenvolvimento Local
+
 ```bash
-# Execute o arquivo start.bat
+# 1. Clone o repositório
+git clone https://github.com/CaioteSouza/merger_pdf.git
+cd merger_pdf
+
+# 2. Execute o launcher (Windows)
 start.bat
-```
 
-### Opção 2: Instalação manual
-```bash
-# 1. Instalar dependências
+# 3. Ou instale manualmente
 pip install -r requirements.txt
-
-# 2. Executar aplicação
 python app.py
+
+# 4. Acesse no navegador
+http://localhost:8080
 ```
 
-### Acesso
-Após iniciar a aplicação, acesse: `http://localhost:5000`
+### 🌐 Deploy em Produção (Ubuntu)
 
-## 📁 Estrutura do Projeto
+```bash
+# 1. Baixar e executar script de instalação
+curl -sSL https://raw.githubusercontent.com/CaioteSouza/merger_pdf/master/deployment/install.sh | sudo bash
+
+# 2. Ou instalação manual
+sudo bash deployment/install.sh
+
+# 3. Monitorar aplicação
+sudo supervisorctl status pdf-merger
+./deployment/monitor.sh
+```
+
+## 📁 Arquitetura do Projeto
 
 ```
-Merge_pdf/
-├── app.py                 # Aplicação principal Flask
-├── requirements.txt       # Dependências Python
-├── start.bat             # Script de inicialização
-├── config.py             # Configurações da aplicação
-├── README.md             # Documentação completa
-├── GUIA_RAPIDO.md        # Manual de uso rápido
-├── logo.png              # Logo original
-├── static/               # Arquivos estáticos
-│   ├── logo.png          # Logo para web
-│   └── style.css         # Estilos CSS organizados
-├── templates/            # Templates HTML
-│   ├── base.html         # Template base com navbar
-│   ├── index.html        # Página principal (upload)
-│   └── history.html      # Histórico de PDFs
-├── uploads/              # PDFs temporários (criado automaticamente)
-├── merged_pdfs/          # PDFs unidos (criado automaticamente)
-└── pdf_merger.db         # Banco de dados SQLite (criado automaticamente)
+📦 Merge_pdf/
+├── 🐍 app.py                    # Aplicação Flask principal
+├── ⚙️  config.py                # Configurações centralizadas
+├── 📋 requirements.txt          # Dependências Python
+├── 🚀 start.bat                # Launcher Windows
+├── 📄 README.md                # Documentação principal
+├── 
+├── 📁 static/                   # Assets estáticos
+│   ├── 🖼️  logo.png             # Logo da aplicação
+│   └── 🎨 style.css            # Estilos CSS organizados
+├── 
+├── 📁 templates/               # Templates HTML
+│   ├── 🏗️  base.html            # Layout base com navbar
+│   ├── 🏠 index.html           # Página inicial (upload)
+│   └── 📊 history.html         # Histórico de PDFs
+├── 
+├── 📁 docs/                    # Documentação
+│   └── 📖 GUIA_RAPIDO.md       # Manual do usuário
+├── 
+├── 📁 scripts/                 # Scripts de correção
+│   ├── 🔧 fix-app.sh           # Correção da aplicação
+│   ├── 🛠️  fix-errors.sh        # Diagnóstico geral  
+│   └── 🔀 fix-navigation.sh    # Correção de rotas
+├── 
+├── 📁 deployment/              # Deploy em produção
+│   ├── 🏗️  install.sh           # Instalação automática
+│   ├── 📊 monitor.sh           # Monitor em tempo real
+│   ├── ⚙️  gunicorn.conf.py     # Configuração Gunicorn
+│   ├── 🌐 wsgi.py              # Entry point WSGI
+│   ├── 🔧 service.sh           # Gerenciador de serviço
+│   ├── 🐧 start.sh             # Launcher Linux
+│   └── 📋 pdf-merger.service   # Arquivo systemd
+├── 
+├── 📁 uploads/                 # PDFs temporários (auto-criado)
+├── 📁 merged_pdfs/            # PDFs processados (auto-criado)
+└── 🗄️  pdf_merger.db           # Banco SQLite (auto-criado)
 ```
 
 ## 🎯 Funcionalidades Detalhadas
 
-### 1. 📄 União de PDFs
-- Selecione múltiplos arquivos PDF (2 ou mais)
-- Interface **drag & drop** intuitiva ou botão de seleção
-- Os PDFs são unidos na ordem selecionada
-- Suporte a PDFs com qualquer número de páginas
-- Processamento em tempo real com feedback visual
+### � Sistema de União de PDFs
+```
+📄 Input:  PDF1 (10 páginas) + PDF2 (5 páginas) + PDF3 (3 páginas)
+⚡ Process: Merge inteligente preservando formatação
+📊 Output: PDF_Final (18 páginas) + Histórico no banco
+```
 
-### 2. 🎨 Interface Web Moderna
-- **Design responsivo** para desktop, tablet e mobile
-- **Cores personalizadas** verde e branco para melhor usabilidade
-- **Logo centralizado** no header para identidade visual
-- **Navegação simplificada** entre páginas (Início/Histórico)
-- **Indicadores visuais** de progresso e status
+**Características:**
+- ✅ **Ordem personalizada**: PDFs unidos na sequência escolhida
+- ✅ **Preservação de qualidade**: Mantém resolução e formatação originais
+- ✅ **Suporte ilimitado**: Qualquer número de páginas por PDF
+- ✅ **Validação rigorosa**: Apenas arquivos PDF válidos aceitos
+- ✅ **Feedback em tempo real**: Progress indicators durante processamento
 
-### 3. 💾 Banco de Dados Inteligente
-- Armazena **automaticamente** informações dos PDFs unidos:
-  - Nome do arquivo final gerado
-  - Lista de arquivos originais utilizados
-  - Número total de páginas processadas
-  - Tamanho do arquivo resultante
-  - Data e hora da criação
-- **SQLite** para persistência local sem configuração
+### 🎨 Interface & User Experience
 
-### 4. 📊 Estatísticas em Tempo Real
-- **Cards visuais** com dados atualizados automaticamente:
-  - Total de PDFs unidos no sistema
-  - Número total de páginas processadas
-  - Tamanho total dos arquivos gerados
-  - Média de páginas por PDF
-- **API JSON** para integração com outras ferramentas
+**Design System:**
+```css
+Cores Primárias:   #155229 (Verde escuro)
+Cores Secundárias: #b9f6ca (Verde claro)
+Background:        #f0f0f0 (Cinza neutro)
+Acentos:          #a5d6a7 (Verde médio)
+```
 
-### 5. 🔧 Gerenciamento Completo
-- **Download direto** dos PDFs unidos
-- **Exclusão segura** com confirmação
-- **Histórico completo** de todas as operações
-- **Visualização detalhada** de informações dos arquivos
+**Features UX:**
+- 🖱️ **Drag & Drop nativo**: Arraste arquivos diretamente para área de upload
+- 📱 **Mobile-first**: Interface 100% responsiva para todos os dispositivos
+- 🎭 **Micro-interactions**: Animações suaves e feedback visual
+- 🧭 **Navegação intuitiva**: Apenas 2 páginas principais (Início/Histórico)
+- 🚨 **Sistema de alertas**: Flash messages com Bootstrap styling
 
-## 🌐 API Endpoints
+### 💾 Sistema de Persistência
 
-- `GET /` - Página principal
-- `POST /upload` - Upload e união de PDFs
-- `GET /history` - Histórico de PDFs unidos
-- `GET /download/<id>` - Download de PDF específico
-- `POST /delete/<id>` - Exclusão de PDF
-- `GET /api/stats` - Estatísticas em JSON
+**Banco de Dados SQLite:**
+```sql
+Table: merged_pdfs
+├── id (PRIMARY KEY)         -> Identificador único
+├── filename                 -> Nome do arquivo gerado  
+├── original_files          -> Lista de PDFs originais
+├── file_path               -> Caminho físico do arquivo
+├── total_pages             -> Número total de páginas
+├── created_at              -> Timestamp de criação
+└── file_size               -> Tamanho em bytes
+```
 
-## 🔒 Segurança e Validação
+**Features de Persistência:**
+- 🗄️ **Auto-backup**: Histórico permanente de todas as operações
+- 📊 **Métricas agregadas**: Estatísticas calculadas em tempo real
+- 🔍 **Busca por metadados**: Filtros por data, tamanho, páginas
+- ♻️ **Gestão de arquivos**: Download e exclusão com confirmação
 
-- **Validação rigorosa** de tipos de arquivo (apenas PDFs)
-- **Nomes seguros** com `secure_filename` para evitar ataques
-- **Limite de tamanho** por arquivo (16MB máximo)
-- **Limpeza automática** de arquivos temporários após processamento
-- **Sanitização** de inputs do usuário
+### 📊 Dashboard & Analytics
 
-## 💻 Requisitos do Sistema
+**Cards de Estatísticas:**
+- 📈 **Total de PDFs**: Contador de arquivos processados
+- 📄 **Total de Páginas**: Soma cumulativa de todas as páginas
+- 💽 **Volume de Dados**: Tamanho total dos arquivos gerados
+- ⚖️ **Média por PDF**: Páginas médias por documento
 
-- **Python 3.7+** (testado até Python 3.13)
-- **Sistema Operacional**: Windows / Linux / macOS
-- **Navegador**: Chrome, Firefox, Safari, Edge (versões modernas)
-- **Espaço em disco**: Pelo menos 100MB livre
-- **RAM**: Mínimo 512MB (recomendado 1GB+)
+**API Endpoints:**
+```javascript
+GET /api/stats
+{
+  "total_merged": 142,
+  "total_pages": 3847,
+  "total_size": 1073741824
+}
+```
 
-## 📚 Sobre as Tecnologias Escolhidas
+## 🌐 Arquitetura & APIs
 
-### 🐍 pypdf vs PyPDF2
-O projeto utiliza a biblioteca **pypdf** (versão 6.1.1), evolução moderna do PyPDF2:
+### 🔌 REST API Endpoints
 
-- ✅ **Desenvolvimento ativo** e suporte contínuo
-- ✅ **Melhor performance** e menos bugs
-- ✅ **API mais limpa** e intuitiva
-- ✅ **Recursos modernos** de PDF
-- ✅ **Tratamento robusto** de erros
+| Método | Endpoint | Descrição | Resposta |
+|--------|----------|-----------|----------|
+| `GET` | `/` | Página principal | HTML |
+| `POST` | `/upload` | Upload + merge PDFs | Redirect |
+| `GET` | `/history` | Histórico completo | HTML |
+| `GET` | `/download/<id>` | Download por ID | File |
+| `POST` | `/delete/<id>` | Exclusão por ID | Redirect |
+| `GET` | `/api/stats` | Estatísticas JSON | JSON |
 
-### 🌐 Flask Framework
-Escolhido por ser leve e flexível, ideal para:
-- **Desenvolvimento rápido** de aplicações web
-- **APIs REST simples** e eficientes
-- **Aplicações locais** e protótipos
-- **Baixo overhead** e alta performance
+### �️ Segurança & Validação
 
-### 🎨 CSS Modular
-- **Arquivo separado** (`static/style.css`) para melhor organização
-- **Estrutura comentada** para fácil manutenção
-- **Cores consistentes** em todo o projeto
-- **Responsividade** para todos os dispositivos
+**Camadas de Proteção:**
+```python
+# 1. Validação de tipo de arquivo
+ALLOWED_EXTENSIONS = ['pdf']
 
-## 📖 Documentação Adicional
+# 2. Limite de tamanho por arquivo  
+MAX_FILE_SIZE = 50 * 1024 * 1024  # 50MB
 
-- **README.md**: Documentação técnica completa
-- **GUIA_RAPIDO.md**: Manual de uso para usuários finais
-- **config.py**: Configurações personalizáveis
-- **Comentários no código**: Explicações detalhadas das funções
+# 3. Sanitização de nomes
+secure_filename(user_input)
 
-## 📈 Melhorias Futuras
+# 4. Limpeza automática
+cleanup_temp_files()
+```
 
-- [ ] Suporte a mais formatos (DOC, DOCX)
-- [ ] Compressão de PDFs resultantes
-- [ ] Visualização prévia dos PDFs
-- [ ] API REST completa
-- [ ] Autenticação de usuários
-- [ ] Upload em lote via pasta
+**Proteções Implementadas:**
+- 🛡️ **Path Traversal**: `secure_filename()` para nomes seguros
+- 📏 **Size Limits**: Limite configurável por arquivo e request total
+- 🧹 **Temp Cleanup**: Remoção automática de arquivos temporários
+- 🔍 **File Validation**: Verificação de headers e extensões PDF
 
-## 📄 Licença
+## 💻 Requisitos & Compatibilidade
 
-Este projeto é de **uso livre** para fins educacionais e pessoais.
+### � Requisitos Mínimos
 
-## 🆘 Suporte e Solução de Problemas
+| Componente | Versão Mínima | Recomendado |
+|------------|---------------|-------------|
+| **Python** | 3.7+ | 3.11+ |
+| **RAM** | 512MB | 2GB+ |
+| **Storage** | 100MB | 1GB+ |
+| **CPU** | 1 core | 2+ cores |
 
-### Problemas Comuns:
-1. **Dependências**: Execute `pip install -r requirements.txt`
-2. **Python**: Certifique-se de ter Python 3.7+ instalado
-3. **Porta ocupada**: Altere a porta no arquivo `app.py` se necessário
-4. **Permissões**: Execute como administrador se houver problemas de escrita
+### 🌐 Navegadores Suportados
 
-### Logs e Debug:
-- A aplicação roda em modo debug por padrão
-- Logs aparecem no terminal onde foi executada
-- Verifique o arquivo `pdf_merger.db` para dados do banco
+| Navegador | Versão | Status |
+|-----------|--------|--------|
+| **Chrome** | 90+ | ✅ Testado |
+| **Firefox** | 88+ | ✅ Testado |
+| **Safari** | 14+ | ✅ Compatível |
+| **Edge** | 90+ | ✅ Compatível |
+
+### �️ Sistemas Operacionais
+
+| SO | Status | Deploy |
+|----|--------|--------|
+| **Windows** | ✅ Nativo | start.bat |
+| **Ubuntu** | ✅ Produção | install.sh |
+| **macOS** | ✅ Compatível | python app.py |
+| **CentOS** | ⚠️ Manual | python app.py |
+
+## 🚀 Deploy & Produção
+
+### 🏗️ Deploy Automático (Ubuntu)
+
+```bash
+# Download e execução em uma linha
+curl -sSL https://raw.githubusercontent.com/CaioteSouza/merger_pdf/master/deployment/install.sh | sudo bash
+```
+
+**O que o script faz:**
+- 📦 Instala dependências (Python, Nginx, Supervisor)
+- 🔧 Configura ambiente virtual isolado
+- 🌐 Setup Nginx como proxy reverso
+- 👤 Cria usuário dedicado `pdfmerger`
+- 🗄️ Inicializa banco de dados SQLite
+- 🔄 Configura Supervisor para auto-restart
+- 🔥 Setup firewall básico com UFW
+- 📊 Sistema de logs rotativos
+
+### 📊 Monitoramento em Produção
+
+```bash
+# Monitor em tempo real
+./deployment/monitor.sh
+
+# Logs da aplicação
+sudo tail -f /var/log/pdf-merger/app.log
+
+# Status dos serviços
+sudo supervisorctl status pdf-merger
+```
+
+### 🔧 Troubleshooting Avançado
+
+```bash
+# Diagnóstico completo
+sudo bash scripts/fix-errors.sh
+
+# Correção de navegação
+sudo bash scripts/fix-navigation.sh
+
+# Correção da aplicação
+sudo bash scripts/fix-app.sh
+```
+
+## � Documentação & Recursos
+
+### 📖 Guias Disponíveis
+
+- 📘 **README.md**: Documentação técnica completa (este arquivo)
+- 📗 **docs/GUIA_RAPIDO.md**: Manual do usuário final
+- 📙 **config.py**: Configurações comentadas
+- 📓 **Code Comments**: Documentação inline no código
+
+### 🔗 Links Úteis
+
+- 🐍 [pypdf Documentation](https://pypdf.readthedocs.io/)
+- 🌶️ [Flask Documentation](https://flask.palletsprojects.com/)
+- 🎨 [Bootstrap 5 Components](https://getbootstrap.com/docs/5.3/)
+- � [Gunicorn Configuration](https://docs.gunicorn.org/)
+
+## 🎯 Roadmap & Futuro
+
+### 📅 Versão 2.0 (Planejada)
+- [ ] 🔐 **Sistema de usuários**: Login/registro/perfis
+- [ ] 📁 **Suporte multi-formato**: DOC, DOCX, PPT para PDF
+- [ ] 🗜️ **Compressão inteligente**: Otimização automática de tamanho
+- [ ] 👁️ **Preview integrado**: Visualização antes do merge
+- [ ] 🌐 **API REST completa**: CRUD via JSON
+- [ ] 📦 **Upload em lote**: Processamento de pastas inteiras
+
+### � Versão 3.0 (Visão)
+- [ ] ☁️ **Cloud storage**: AWS S3, Google Drive integration
+- [ ] 🤖 **AI features**: OCR, content analysis
+- [ ] 📊 **Advanced analytics**: Usage patterns, insights
+- [ ] 🔌 **Plugin system**: Extensões customizadas
+- [ ] 🌍 **Internacionalização**: Multi-idiomas
+- [ ] 📱 **Mobile app**: React Native companion
+
+## 📄 Licença & Contribuição
+
+### 📋 Licença
+```
+MIT License - Uso livre para fins educacionais e comerciais
+Copyright (c) 2025 PDF Merger Project
+```
+
+### 🤝 Como Contribuir
+1. 🍴 Fork o repositório
+2. 🌿 Crie uma branch: `git checkout -b feature/nova-funcionalidade`
+3. 💻 Faça suas alterações
+4. ✅ Teste suas mudanças
+5. 📤 Submit um Pull Request
 
 ---
 
-## 🎉 Agradecimentos
+## 🎉 Reconhecimentos
 
-Ferramenta desenvolvida com foco na **simplicidade** e **eficiência**, utilizando as melhores práticas de desenvolvimento web moderno.
+### 👨‍💻 Desenvolvimento
+**Core Team**: Arquitetura moderna, UX otimizada, deploy automatizado
 
-**Versão atual**: 1.0.0  
-**Última atualização**: Outubro 2025
+### 🛠️ Tecnologias
+**Open Source**: Flask, pypdf, Bootstrap, SQLite e comunidade
+
+### 💡 Inspiração  
+**Princípios**: Simplicidade, performance, experiência do usuário
+
+---
+
+<div align="center">
+
+### 🚀 **PDF Merger v2.0** 
+#### *A ferramenta definitiva para união de PDFs*
+
+[![Deploy](https://img.shields.io/badge/Deploy-Ready-brightgreen.svg)](./deployment/)
+[![Docs](https://img.shields.io/badge/Docs-Complete-blue.svg)](./docs/)
+[![Support](https://img.shields.io/badge/Support-Active-orange.svg)](./scripts/)
+
+**Desenvolvido com ❤️ para simplificar o trabalho com PDFs**
+
+</div>
