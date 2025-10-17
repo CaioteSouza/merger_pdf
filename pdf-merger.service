@@ -1,0 +1,15 @@
+[Unit]
+Description=PDF Merger Application
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/path/to/your/Merge_pdf
+Environment=PATH=/usr/bin/python3
+ExecStart=/usr/bin/python3 app.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
