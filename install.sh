@@ -114,7 +114,7 @@ server {
     
     location / {
         limit_req zone=pdf_upload burst=5 nodelay;
-        proxy_pass http://127.0.0.1:8080;
+        proxy_pass http://172.16.22.172:8080;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -141,35 +141,6 @@ EOF
 ln -sf /etc/nginx/sites-available/pdf-merger /etc/nginx/sites-enabled/
 rm -f /etc/nginx/sites-enabled/default
 
-# Configurar Fail2Ban para proteção contra ataques
-echo -e "${YELLOW}🛡️  Configurando Fail2Ban...${NC}"
-cat > /etc/fail2ban/jail.d/pdf-merger.conf << EOF
-[pdf-merger]
-enabled = true
-port = 80
-filter = pdf-merger
-logpath = /var/log/nginx/pdf-merger-access.log
-maxretry = 5
-bantime = 3600
-findtime = 600
-EOF
-
-cat > /etc/fail2ban/filter.d/pdf-merger.conf << EOF
-[Definition]
-failregex = ^<HOST> .* "(GET|POST).*" (4\d\d|5\d\d) .*$
-ignoreregex =
-EOF
-
-# Configurar firewall robusto
-echo -e "${YELLOW}🔥 Configurando firewall...${NC}"
-ufw --force reset
-ufw default deny incoming
-ufw default allow outgoing
-ufw allow ssh
-ufw allow 80/tcp
-ufw allow 443/tcp
-ufw --force enable
-
 # Configurar rotação de logs
 echo -e "${YELLOW}📝 Configurando rotação de logs...${NC}"
 cat > /etc/logrotate.d/pdf-merger << EOF
@@ -186,20 +157,6 @@ cat > /etc/logrotate.d/pdf-merger << EOF
     endscript
 }
 EOF
-
-# Criar script de backup automático
-echo -e "${YELLOW}💾 Configurando backup automático...${NC}"
-cat > /opt/pdf-merger/backup.sh << 'EOF'
-#!/bin/bash
-BACKUP_DIR="/var/backups/pdf-merger"
-DATE=$(date +%Y%m%d_%H%M%S)
-tar -czf "$BACKUP_DIR/backup_$DATE.tar.gz" -C /opt/pdf-merger merged_pdfs/ pdf_merger.db
-find "$BACKUP_DIR" -name "backup_*.tar.gz" -mtime +7 -delete
-EOF
-chmod +x /opt/pdf-merger/backup.sh
-
-# Adicionar backup ao cron (diário às 2:00)
-echo "0 2 * * * /opt/pdf-merger/backup.sh" | crontab -u pdfmerger -
 
 # Reiniciar serviços
 echo -e "${YELLOW}🔄 Reiniciando serviços...${NC}"
