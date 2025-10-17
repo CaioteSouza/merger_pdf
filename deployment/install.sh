@@ -188,6 +188,7 @@ ufw --force enable
 ufw allow ssh
 ufw allow 80/tcp
 ufw allow 443/tcp
+ufw allow 8080/tcp  # PDF Merger porta
 
 # Reiniciar serviços
 echo -e "${YELLOW}🔄 Iniciando serviços...${NC}"
