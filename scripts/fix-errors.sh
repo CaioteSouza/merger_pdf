@@ -43,15 +43,15 @@ fi
 # 3. Verificar banco de dados
 echo ""
 echo "3. Verificando banco de dados..."
-if [ -f "/opt/pdf-merger/pdf_merger.db" ]; then
+if [ -f "/var/www/merger_pdf/pdf_merger.db" ]; then
     echo -e "   ${GREEN}✅ Banco de dados existe${NC}"
     # Testar se consegue conectar
-    if sqlite3 /opt/pdf-merger/pdf_merger.db ".tables" >/dev/null 2>&1; then
+    if sqlite3 /var/www/merger_pdf/pdf_merger.db ".tables" >/dev/null 2>&1; then
         echo -e "   ${GREEN}✅ Banco de dados acessível${NC}"
     else
         echo -e "   ${RED}❌ Erro ao acessar banco de dados${NC}"
         echo -e "   ${YELLOW}🔧 Recriando banco...${NC}"
-        cd /opt/pdf-merger
+        cd /var/www/merger_pdf
         sudo -u pdfmerger python3 -c "
 import sqlite3
 conn = sqlite3.connect('pdf_merger.db')
@@ -73,9 +73,9 @@ print('Banco criado com sucesso!')
 "
     fi
 else
-    echo -e "   ${RED}❌ Banco de dados não existe${NC}"
+    echo -e "   ${RED}❌ Banco de dados não encontrado${NC}"
     echo -e "   ${YELLOW}🔧 Criando banco...${NC}"
-    cd /opt/pdf-merger
+    cd /var/www/merger_pdf
     sudo -u pdfmerger python3 -c "
 import sqlite3
 conn = sqlite3.connect('pdf_merger.db')
@@ -122,7 +122,7 @@ done
 # 5. Verificar dependências Python
 echo ""
 echo "5. Verificando dependências Python..."
-cd /opt/pdf-merger
+cd /var/www/merger_pdf
 if /opt/pdf-merger-venv/bin/python3 -c "import flask, pypdf" 2>/dev/null; then
     echo -e "   ${GREEN}✅ Dependências OK${NC}"
 else
@@ -134,7 +134,7 @@ fi
 # 6. Testar aplicação diretamente
 echo ""
 echo "6. Testando aplicação..."
-cd /opt/pdf-merger
+cd /var/www/merger_pdf
 timeout 10 sudo -u pdfmerger /opt/pdf-merger-venv/bin/python3 -c "
 import app
 print('Aplicação importada com sucesso!')

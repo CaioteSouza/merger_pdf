@@ -7,8 +7,10 @@ Usado pelo Gunicorn para servir a aplicação
 import sys
 import os
 
-# Adicionar o diretório da aplicação ao path
-sys.path.insert(0, os.path.dirname(__file__))
+# Adicionar o diretório pai (onde está app.py) ao path
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
+sys.path.insert(0, parent_dir)
 
 from app import app
 
