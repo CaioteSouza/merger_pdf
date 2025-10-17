@@ -1,157 +1,310 @@
-# 📄 PDF Merger - Ferramenta Profissional para Unir PDFs# 📄 PDF Merger - Ferramenta Profissional para Unir PDFs
+# 📄 PDF Merger - Ferramenta Profissional para Unir PDFs# 📄 PDF Merger - Ferramenta Profissional para Unir PDFs# 📄 PDF Merger - Ferramenta Profissional para Unir PDFs
 
 
 
-<div align="center"><div align="center">
+<div align="center">
 
 
 
-![PDF Merger](https://img.shields.io/badge/PDF_Merger-v2.0-brightgreen.svg?style=for-the-badge)![PDF Merger](https://img.shields.io/badge/PDF_Merger-v2.0-brightgreen.svg?style=for-the-badge)
+![PDF Merger](https://img.shields.io/badge/PDF_Merger-v2.0-brightgreen.svg?style=for-the-badge)<div align="center"><div align="center">
 
-![Ubuntu](https://img.shields.io/badge/Ubuntu-Server-orange.svg?style=for-the-badge)![Ubuntu](https://img.shields.io/badge/Ubuntu-Server-orange.svg?style=for-the-badge)
+![Ubuntu](https://img.shields.io/badge/Ubuntu-Server-orange.svg?style=for-the-badge)
 
-![Python](https://img.shields.io/badge/Python-3.8+-blue.svg?style=for-the-badge)![Python](https://img.shields.io/badge/Python-3.8+-blue.svg?style=for-the-badge)
-
-
-
-**🎯 Une múltiplos PDFs em um único documento com interface moderna e deploy automatizado****🎯 Une múltiplos PDFs em um único documento com interface moderna e deploy automatizado**
+![Python](https://img.shields.io/badge/Python-3.8+-blue.svg?style=for-the-badge)
 
 
 
-[![Deploy](https://img.shields.io/badge/Deploy-Ubuntu_Only-orange.svg)](./docs/DEPLOY_UBUNTU.md)[![Deploy](https://img.shields.io/badge/Deploy-Ubuntu_Only-orange.svg)](./docs/DEPLOY_UBUNTU.md)
-
-[![Manual](https://img.shields.io/badge/Manual-Usuário-blue.svg)](./docs/MANUAL_USUARIO.md)[![Manual](https://img.shields.io/badge/Manual-Usuário-blue.svg)](./docs/MANUAL_USUARIO.md)
-
-[![Dev](https://img.shields.io/badge/Dev-Diary-purple.svg)](./docs/DIARIO_DESENVOLVIMENTO.md)[![Dev](https://img.shields.io/badge/Dev-Diary-purple.svg)](./docs/DIARIO_DESENVOLVIMENTO.md)
+**🎯 Une múltiplos PDFs em um único documento com interface moderna e deploy automatizado**![PDF Merger](https://img.shields.io/badge/PDF_Merger-v2.0-brightgreen.svg?style=for-the-badge)![PDF Merger](https://img.shields.io/badge/PDF_Merger-v2.0-brightgreen.svg?style=for-the-badge)
 
 
 
-</div></div>
+[![Deploy](https://img.shields.io/badge/Deploy-Ubuntu_Only-orange.svg)](./docs/DEPLOY_UBUNTU.md)![Ubuntu](https://img.shields.io/badge/Ubuntu-Server-orange.svg?style=for-the-badge)![Ubuntu](https://img.shields.io/badge/Ubuntu-Server-orange.svg?style=for-the-badge)
+
+[![Manual](https://img.shields.io/badge/Manual-Usuário-blue.svg)](./docs/MANUAL_USUARIO.md)
+
+[![Dev](https://img.shields.io/badge/Dev-Diary-purple.svg)](./docs/DIARIO_DESENVOLVIMENTO.md)![Python](https://img.shields.io/badge/Python-3.8+-blue.svg?style=for-the-badge)![Python](https://img.shields.io/badge/Python-3.8+-blue.svg?style=for-the-badge)
 
 
+
+</div>
+
+
+
+---**🎯 Une múltiplos PDFs em um único documento com interface moderna e deploy automatizado****🎯 Une múltiplos PDFs em um único documento com interface moderna e deploy automatizado**
+
+
+
+## 🚀 **Quick Start**
+
+
+
+### 💻 **Para Desenvolvedores**[![Deploy](https://img.shields.io/badge/Deploy-Ubuntu_Only-orange.svg)](./docs/DEPLOY_UBUNTU.md)[![Deploy](https://img.shields.io/badge/Deploy-Ubuntu_Only-orange.svg)](./docs/DEPLOY_UBUNTU.md)
+
+```bash
+
+# 1. Clone o repositório[![Manual](https://img.shields.io/badge/Manual-Usuário-blue.svg)](./docs/MANUAL_USUARIO.md)[![Manual](https://img.shields.io/badge/Manual-Usuário-blue.svg)](./docs/MANUAL_USUARIO.md)
+
+git clone https://github.com/CaioteSouza/merger_pdf.git
+
+cd merger_pdf[![Dev](https://img.shields.io/badge/Dev-Diary-purple.svg)](./docs/DIARIO_DESENVOLVIMENTO.md)[![Dev](https://img.shields.io/badge/Dev-Diary-purple.svg)](./docs/DIARIO_DESENVOLVIMENTO.md)
+
+
+
+# 2. Desenvolvimento local (qualquer SO)
+
+python -m venv .venv
+
+source .venv/bin/activate  # Linux/macOS</div></div>
+
+# ou .venv\Scripts\activate # Windows
+
+pip install -r requirements.txt
+
+python app.py
 
 ------
 
+# 3. Deploy em produção (APENAS UBUNTU)
 
+curl -sSL https://raw.githubusercontent.com/CaioteSouza/merger_pdf/master/deployment/install.sh | sudo bash
+
+```
 
 ## 🚀 **Quick Start**## 🚀 **Quick Start**
 
+### 🌐 **Para Usuários Finais**
 
+Acesse a ferramenta pelo navegador no endereço fornecido pelo administrador.  
+
+📖 **Manual completo**: [`docs/MANUAL_USUARIO.md`](./docs/MANUAL_USUARIO.md)
 
 ### 💻 **Para Desenvolvedores**### 💻 **Para Desenvolvedores**
 
+---
+
 ```bash```bash
+
+## ⚠️ **IMPORTANTE: Compatibilidade de Sistema**
 
 # 1. Clone o repositório# 1. Clone o repositório
 
-git clone https://github.com/CaioteSouza/merger_pdf.gitgit clone https://github.com/CaioteSouza/merger_pdf.git
+| Sistema | Desenvolvimento | Produção | Status |
 
-cd merger_pdfcd merger_pdf
+|---------|----------------|----------|--------|git clone https://github.com/CaioteSouza/merger_pdf.gitgit clone https://github.com/CaioteSouza/merger_pdf.git
 
+| **🐧 Ubuntu 18.04+** | ✅ Suportado | ✅ **RECOMENDADO** | Deploy automatizado |
 
+| **🪟 Windows** | ✅ Suportado | ❌ Não suportado | Apenas desenvolvimento |cd merger_pdfcd merger_pdf
 
-# 2. Desenvolvimento local (qualquer SO)# 2. Desenvolvimento local (qualquer SO)
+| **🍎 macOS** | ✅ Suportado | ❌ Não suportado | Apenas desenvolvimento |
 
-python -m venv .venvpython -m venv .venv
-
-source .venv/bin/activate  # Linux/macOSsource .venv/bin/activate  # Linux/macOS
-
-# ou .venv\Scripts\activate # Windows# ou .venv\Scripts\activate # Windows
-
-pip install -r requirements.txtpip install -r requirements.txt
-
-python app.pypython app.py
+| **🐧 Outras Linux** | ⚠️ Manual | ⚠️ Manual | Scripts não testados |
 
 
 
-# 3. Deploy em produção (APENAS UBUNTU)# 3. Deploy em produção (APENAS UBUNTU)
+**💡 Para produção, use Ubuntu Server para garantir compatibilidade total dos scripts de deploy.**# 2. Desenvolvimento local (qualquer SO)# 2. Desenvolvimento local (qualquer SO)
+
+
+
+---python -m venv .venvpython -m venv .venv
+
+
+
+## 📚 **Documentação Completa**source .venv/bin/activate  # Linux/macOSsource .venv/bin/activate  # Linux/macOS
+
+
+
+### 📖 **Guias por Perfil**# ou .venv\Scripts\activate # Windows# ou .venv\Scripts\activate # Windows
+
+
+
+| Documento | Público-Alvo | Descrição |pip install -r requirements.txtpip install -r requirements.txt
+
+|-----------|--------------|-----------|
+
+| **📋 [RESUMO_EXECUTIVO.md](./docs/RESUMO_EXECUTIVO.md)** | Gestores | Visão geral, métricas e roadmap |python app.pypython app.py
+
+| **🚀 [DEPLOY_UBUNTU.md](./docs/DEPLOY_UBUNTU.md)** | **DevOps/SysAdmin** | **Deploy completo em Ubuntu** |
+
+| **📱 [MANUAL_USUARIO.md](./docs/MANUAL_USUARIO.md)** | **Usuários Finais** | **Guia de uso da ferramenta** |
+
+| **🔧 [DIARIO_DESENVOLVIMENTO.md](./docs/DIARIO_DESENVOLVIMENTO.md)** | **Desenvolvedores** | **Histórico técnico e decisões** |
+
+| **📝 [CHANGELOG.md](./docs/CHANGELOG.md)** | Todos | Histórico de versões |# 3. Deploy em produção (APENAS UBUNTU)# 3. Deploy em produção (APENAS UBUNTU)
+
+| **🤝 [CONTRIBUTING.md](./docs/CONTRIBUTING.md)** | Contribuidores | Guia de contribuição |
 
 curl -sSL https://raw.githubusercontent.com/CaioteSouza/merger_pdf/master/deployment/install.sh | sudo bashcurl -sSL https://raw.githubusercontent.com/CaioteSouza/merger_pdf/master/deployment/install.sh | sudo bash
 
+### 🎯 **Acesso Rápido por Necessidade**
+
 ``````
 
+- **🚀 Quero fazer deploy**: → [`DEPLOY_UBUNTU.md`](./docs/DEPLOY_UBUNTU.md)
+
+- **📱 Quero usar a ferramenta**: → [`MANUAL_USUARIO.md`](./docs/MANUAL_USUARIO.md)  
+
+- **🔧 Quero entender o código**: → [`DIARIO_DESENVOLVIMENTO.md`](./docs/DIARIO_DESENVOLVIMENTO.md)
+
+- **📊 Quero visão executiva**: → [`RESUMO_EXECUTIVO.md`](./docs/RESUMO_EXECUTIVO.md)### 🌐 **Para Usuários Finais**### 🌐 **Para Usuários Finais**
 
 
-### 🌐 **Para Usuários Finais**### 🌐 **Para Usuários Finais**
 
-Acesse a ferramenta pelo navegador no endereço fornecido pelo administrador.  Acesse a ferramenta pelo navegador no endereço fornecido pelo administrador.  
-
-📖 **Manual completo**: [`docs/MANUAL_USUARIO.md`](./docs/MANUAL_USUARIO.md)📖 **Manual completo**: [`docs/MANUAL_USUARIO.md`](./docs/MANUAL_USUARIO.md)
+---Acesse a ferramenta pelo navegador no endereço fornecido pelo administrador.  Acesse a ferramenta pelo navegador no endereço fornecido pelo administrador.  
 
 
 
-------
+## ✨ **Principais Funcionalidades**📖 **Manual completo**: [`docs/MANUAL_USUARIO.md`](./docs/MANUAL_USUARIO.md)📖 **Manual completo**: [`docs/MANUAL_USUARIO.md`](./docs/MANUAL_USUARIO.md)
 
 
+
+### 🎯 **Para Usuários**
+
+- ✅ **Drag & Drop**: Interface moderna para upload
+
+- ✅ **Múltiplos PDFs**: Combina 2+ arquivos em ordem específica------
+
+- ✅ **Histórico Completo**: Banco SQLite com todos os PDFs criados
+
+- ✅ **Estatísticas Live**: Métricas de uso em tempo real
+
+- ✅ **Mobile Friendly**: Interface responsiva para qualquer dispositivo
 
 ## ⚠️ **IMPORTANTE: Compatibilidade de Sistema**## ⚠️ **IMPORTANTE: Compatibilidade de Sistema**
 
+### 🛡️ **Para Administradores** 
 
+- ✅ **Deploy Automatizado**: Scripts para Ubuntu Server
 
-| Sistema | Desenvolvimento | Produção | Status || Sistema | Desenvolvimento | Produção | Status |
+- ✅ **Produção Robusta**: Gunicorn + Supervisor + 17 workers
 
-|---------|----------------|----------|--------||---------|----------------|----------|--------|
+- ✅ **Segurança**: Validação rigorosa + firewall configurado| Sistema | Desenvolvimento | Produção | Status || Sistema | Desenvolvimento | Produção | Status |
 
-| **🐧 Ubuntu 18.04+** | ✅ Suportado | ✅ **RECOMENDADO** | Deploy automatizado || **🐧 Ubuntu 18.04+** | ✅ Suportado | ✅ **RECOMENDADO** | Deploy automatizado |
+- ✅ **Monitoramento**: Logs detalhados + scripts de diagnóstico
 
-| **🪟 Windows** | ✅ Suportado | ❌ Não suportado | Apenas desenvolvimento || **🪟 Windows** | ✅ Suportado | ❌ Não suportado | Apenas desenvolvimento |
-
-| **🍎 macOS** | ✅ Suportado | ❌ Não suportado | Apenas desenvolvimento || **🍎 macOS** | ✅ Suportado | ❌ Não suportado | Apenas desenvolvimento |
-
-| **🐧 Outras Linux** | ⚠️ Manual | ⚠️ Manual | Scripts não testados || **🐧 Outras Linux** | ⚠️ Manual | ⚠️ Manual | Scripts não testados |
-
-
-
-**💡 Para produção, use Ubuntu Server para garantir compatibilidade total dos scripts de deploy.****💡 Para produção, use Ubuntu Server para garantir compatibilidade total dos scripts de deploy.**
+- ✅ **Manutenção**: Ferramentas de correção automática|---------|----------------|----------|--------||---------|----------------|----------|--------|
 
 
 
-------
+---| **🐧 Ubuntu 18.04+** | ✅ Suportado | ✅ **RECOMENDADO** | Deploy automatizado || **🐧 Ubuntu 18.04+** | ✅ Suportado | ✅ **RECOMENDADO** | Deploy automatizado |
 
 
 
-## 📚 **Documentação Completa**## 📚 **Documentação Completa**
+## 🛠️ **Stack Tecnológico Resumido**| **🪟 Windows** | ✅ Suportado | ❌ Não suportado | Apenas desenvolvimento || **🪟 Windows** | ✅ Suportado | ❌ Não suportado | Apenas desenvolvimento |
 
 
 
-### 📖 **Guias por Perfil**### 📖 **Guias por Perfil**
+| Camada | Tecnologia | Versão | Propósito || **🍎 macOS** | ✅ Suportado | ❌ Não suportado | Apenas desenvolvimento || **🍎 macOS** | ✅ Suportado | ❌ Não suportado | Apenas desenvolvimento |
+
+|--------|------------|--------|-----------|
+
+| **Backend** | Flask | 3.0.0 | Framework web || **🐧 Outras Linux** | ⚠️ Manual | ⚠️ Manual | Scripts não testados || **🐧 Outras Linux** | ⚠️ Manual | ⚠️ Manual | Scripts não testados |
+
+| **PDF Engine** | pypdf | 6.1.1 | Manipulação de PDFs |
+
+| **Database** | SQLite3 | - | Histórico e estatísticas |
+
+| **Frontend** | Bootstrap | 5.3.0 | Interface responsiva |
+
+| **Deploy** | Gunicorn + Supervisor | - | Produção Ubuntu |**💡 Para produção, use Ubuntu Server para garantir compatibilidade total dos scripts de deploy.****💡 Para produção, use Ubuntu Server para garantir compatibilidade total dos scripts de deploy.**
 
 
 
-| Documento | Público-Alvo | Descrição || Documento | Público-Alvo | Descrição |
+**📋 Para detalhes técnicos completos**: [`DIARIO_DESENVOLVIMENTO.md`](./docs/DIARIO_DESENVOLVIMENTO.md)
+
+
+
+---------
+
+
+
+## 🔧 **Suporte e Manutenção**
+
+
+
+### 🆘 **Problemas Comuns**## 📚 **Documentação Completa**## 📚 **Documentação Completa**
+
+- **🚀 Deploy não funciona**: Verifique se está usando Ubuntu
+
+- **📱 Usuário com dúvidas**: Direcione para [`MANUAL_USUARIO.md`](./docs/MANUAL_USUARIO.md)
+
+- **🔧 Erro técnico**: Execute scripts em `scripts/fix-*.sh`
+
+- **📊 Monitoramento**: Use `deployment/monitor.sh`### 📖 **Guias por Perfil**### 📖 **Guias por Perfil**
+
+
+
+### 📞 **Canais de Suporte**
+
+- **💬 GitHub Issues**: Para bugs e melhorias
+
+- **📚 Documentação**: 6 guias especializados em `docs/`| Documento | Público-Alvo | Descrição || Documento | Público-Alvo | Descrição |
+
+- **🛠️ Scripts**: Ferramentas automáticas em `scripts/`
 
 |-----------|--------------|-----------||-----------|--------------|-----------|
 
+---
+
 | **📋 [RESUMO_EXECUTIVO.md](./docs/RESUMO_EXECUTIVO.md)** | Gestores | Visão geral, métricas e roadmap || **📋 [RESUMO_EXECUTIVO.md](./docs/RESUMO_EXECUTIVO.md)** | Gestores | Visão geral, métricas e roadmap |
+
+## 📈 **Status do Projeto**
 
 | **🚀 [DEPLOY_UBUNTU.md](./docs/DEPLOY_UBUNTU.md)** | **DevOps/SysAdmin** | **Deploy completo em Ubuntu** || **🚀 [DEPLOY_UBUNTU.md](./docs/DEPLOY_UBUNTU.md)** | **DevOps/SysAdmin** | **Deploy completo em Ubuntu** |
 
-| **📱 [MANUAL_USUARIO.md](./docs/MANUAL_USUARIO.md)** | **Usuários Finais** | **Guia de uso da ferramenta** || **📱 [MANUAL_USUARIO.md](./docs/MANUAL_USUARIO.md)** | **Usuários Finais** | **Guia de uso da ferramenta** |
+### ✅ **Versão Atual: 2.0**
 
-| **🔧 [DIARIO_DESENVOLVIMENTO.md](./docs/DIARIO_DESENVOLVIMENTO.md)** | **Desenvolvedores** | **Histórico técnico e decisões** || **🔧 [DIARIO_DESENVOLVIMENTO.md](./docs/DIARIO_DESENVOLVIMENTO.md)** | **Desenvolvedores** | **Histórico técnico e decisões** |
+- **📊 Funcionalidades**: 15+ implementadas| **📱 [MANUAL_USUARIO.md](./docs/MANUAL_USUARIO.md)** | **Usuários Finais** | **Guia de uso da ferramenta** || **📱 [MANUAL_USUARIO.md](./docs/MANUAL_USUARIO.md)** | **Usuários Finais** | **Guia de uso da ferramenta** |
 
-| **📝 [CHANGELOG.md](./docs/CHANGELOG.md)** | Todos | Histórico de versões || **📝 [CHANGELOG.md](./docs/CHANGELOG.md)** | Todos | Histórico de versões |
+- **📁 Estrutura**: Totalmente organizada
 
-| **🤝 [CONTRIBUTING.md](./docs/CONTRIBUTING.md)** | Contribuidores | Guia de contribuição || **🤝 [CONTRIBUTING.md](./docs/CONTRIBUTING.md)** | Contribuidores | Guia de contribuição |
+- **📚 Documentação**: 6 guias completos| **🔧 [DIARIO_DESENVOLVIMENTO.md](./docs/DIARIO_DESENVOLVIMENTO.md)** | **Desenvolvedores** | **Histórico técnico e decisões** || **🔧 [DIARIO_DESENVOLVIMENTO.md](./docs/DIARIO_DESENVOLVIMENTO.md)** | **Desenvolvedores** | **Histórico técnico e decisões** |
 
+- **🐧 Deploy Ubuntu**: 100% automatizado
 
-
-### 🎯 **Acesso Rápido por Necessidade**### 🎯 **Acesso Rápido por Necessidade**
-
-
-
-- **🚀 Quero fazer deploy**: → [`DEPLOY_UBUNTU.md`](./docs/DEPLOY_UBUNTU.md)- **🚀 Quero fazer deploy**: → [`DEPLOY_UBUNTU.md`](./docs/DEPLOY_UBUNTU.md)
-
-- **📱 Quero usar a ferramenta**: → [`MANUAL_USUARIO.md`](./docs/MANUAL_USUARIO.md)  - **📱 Quero usar a ferramenta**: → [`MANUAL_USUARIO.md`](./docs/MANUAL_USUARIO.md)  
-
-- **🔧 Quero entender o código**: → [`DIARIO_DESENVOLVIMENTO.md`](./docs/DIARIO_DESENVOLVIMENTO.md)- **🔧 Quero entender o código**: → [`DIARIO_DESENVOLVIMENTO.md`](./docs/DIARIO_DESENVOLVIMENTO.md)
-
-- **📊 Quero visão executiva**: → [`RESUMO_EXECUTIVO.md`](./docs/RESUMO_EXECUTIVO.md)- **📊 Quero visão executiva**: → [`RESUMO_EXECUTIVO.md`](./docs/RESUMO_EXECUTIVO.md)
+- **🧹 Código**: Limpo e otimizado| **📝 [CHANGELOG.md](./docs/CHANGELOG.md)** | Todos | Histórico de versões || **📝 [CHANGELOG.md](./docs/CHANGELOG.md)** | Todos | Histórico de versões |
 
 
+
+### 🎯 **Próximas Versões**| **🤝 [CONTRIBUTING.md](./docs/CONTRIBUTING.md)** | Contribuidores | Guia de contribuição || **🤝 [CONTRIBUTING.md](./docs/CONTRIBUTING.md)** | Contribuidores | Guia de contribuição |
+
+- **2.1**: API REST + testes automatizados
+
+- **3.0**: Sistema de usuários + cloud integration
+
+
+
+**📝 Roadmap completo**: [`CHANGELOG.md`](./docs/CHANGELOG.md)### 🎯 **Acesso Rápido por Necessidade**### 🎯 **Acesso Rápido por Necessidade**
+
+
+
+---
+
+
+
+<div align="center">- **🚀 Quero fazer deploy**: → [`DEPLOY_UBUNTU.md`](./docs/DEPLOY_UBUNTU.md)- **🚀 Quero fazer deploy**: → [`DEPLOY_UBUNTU.md`](./docs/DEPLOY_UBUNTU.md)
+
+
+
+## 🎉 **Projeto Completo e Documentado**- **📱 Quero usar a ferramenta**: → [`MANUAL_USUARIO.md`](./docs/MANUAL_USUARIO.md)  - **📱 Quero usar a ferramenta**: → [`MANUAL_USUARIO.md`](./docs/MANUAL_USUARIO.md)  
+
+
+
+### *Do desenvolvimento local ao deploy em produção*- **🔧 Quero entender o código**: → [`DIARIO_DESENVOLVIMENTO.md`](./docs/DIARIO_DESENVOLVIMENTO.md)- **🔧 Quero entender o código**: → [`DIARIO_DESENVOLVIMENTO.md`](./docs/DIARIO_DESENVOLVIMENTO.md)
+
+
+
+**Para começar, acesse a documentação específica para seu perfil acima** ⬆️- **📊 Quero visão executiva**: → [`RESUMO_EXECUTIVO.md`](./docs/RESUMO_EXECUTIVO.md)- **📊 Quero visão executiva**: → [`RESUMO_EXECUTIVO.md`](./docs/RESUMO_EXECUTIVO.md)
+
+
+
+[![Desenvolvido com ❤️](https://img.shields.io/badge/Desenvolvido%20com-%E2%9D%A4%EF%B8%8F-red.svg)]()
+
+[![Ubuntu Ready](https://img.shields.io/badge/Ubuntu-Ready-orange.svg)]()
 
 ------
 
+</div>
 
 
 ## ✨ **Principais Funcionalidades**## ✨ **Principais Funcionalidades**
