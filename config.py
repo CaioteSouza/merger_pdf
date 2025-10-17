@@ -36,6 +36,6 @@ MAX_CONTENT_LENGTH = 200 * 1024 * 1024  # 200MB limite total de request
 PERMANENT_SESSION_LIFETIME = 3600  # Sessão expira em 1 hora
 
 # Configurações de limpeza automática
-AUTO_CLEANUP_ENABLED = True       # Ativa limpeza automática de arquivos antigos
+AUTO_CLEANUP_ENABLED = False       # Ativa limpeza automática de arquivos antigos
 CLEANUP_INTERVAL_HOURS = 24       # Limpa arquivos a cada 24 horas
 TEMP_FILE_MAX_AGE_HOURS = 48      # Remove arquivos temporários após 48h
