@@ -68,6 +68,29 @@ if __name__ == "__main__":
     app.run()
 EOF
 
+# Inicializar banco de dados
+echo -e "${YELLOW}🗄️  Inicializando banco de dados...${NC}"
+cd $APP_DIR
+sudo -u pdfmerger /opt/pdf-merger-venv/bin/python3 -c "
+import sqlite3
+conn = sqlite3.connect('pdf_merger.db')
+cursor = conn.cursor()
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS merged_pdfs (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        filename TEXT NOT NULL,
+        original_files TEXT NOT NULL,
+        file_path TEXT NOT NULL,
+        total_pages INTEGER NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        file_size INTEGER NOT NULL
+    )
+''')
+conn.commit()
+conn.close()
+print('Banco de dados inicializado com sucesso!')
+"
+
 # Configurar permissões robustas
 echo -e "${YELLOW}🔐 Configurando permissões de segurança...${NC}"
 chown -R pdfmerger:pdfmerger $APP_DIR
@@ -78,6 +101,7 @@ chmod -R 640 $APP_DIR/*.py
 chmod +x $APP_DIR/wsgi.py
 chmod 755 $APP_DIR/{uploads,merged_pdfs}
 chmod 644 $APP_DIR/gunicorn.conf.py
+chmod 644 $APP_DIR/pdf_merger.db
 
 # Criar configuração do Supervisor (mais robusto que systemd para apps Python)
 echo -e "${YELLOW}⚙️  Configurando Supervisor...${NC}"
@@ -114,7 +138,7 @@ server {
     
     location / {
         limit_req zone=pdf_upload burst=5 nodelay;
-        proxy_pass http://172.16.22.172:8080;
+        proxy_pass http://127.0.0.1:8080;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -158,17 +182,39 @@ cat > /etc/logrotate.d/pdf-merger << EOF
 }
 EOF
 
+# Configurar firewall básico
+echo -e "${YELLOW}🔥 Configurando firewall...${NC}"
+ufw --force enable
+ufw allow ssh
+ufw allow 80/tcp
+ufw allow 443/tcp
+
 # Reiniciar serviços
-echo -e "${YELLOW}🔄 Reiniciando serviços...${NC}"
+echo -e "${YELLOW}🔄 Iniciando serviços...${NC}"
 supervisorctl reread
 supervisorctl update
+supervisorctl start pdf-merger
 nginx -t && systemctl restart nginx
-systemctl restart fail2ban
+
+# Aguardar aplicação iniciar
+echo -e "${YELLOW}⏳ Aguardando aplicação iniciar...${NC}"
+sleep 5
+
+# Testar se está funcionando
+echo -e "${YELLOW}🧪 Testando aplicação...${NC}"
+if curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/ | grep -q "200"; then
+    echo -e "${GREEN}✅ Aplicação funcionando na porta 8080${NC}"
+else
+    echo -e "${RED}❌ Problema na aplicação - verificando logs...${NC}"
+    supervisorctl status pdf-merger
+    echo "Últimas linhas do log:"
+    tail -10 /var/log/pdf-merger/app.log 2>/dev/null || echo "Log não encontrado"
+fi
 
 echo -e "${GREEN}✅ INSTALAÇÃO ROBUSTA CONCLUÍDA!${NC}"
 echo "=================================================="
 echo -e "${BLUE}🚀 SISTEMA DE PRODUÇÃO CONFIGURADO:${NC}"
-echo -e "${YELLOW}📍 Acesse: http://SEU_IP${NC}"
+echo -e "${YELLOW}📍 Acesse: http://172.16.22.172:8080{NC}"
 echo ""
 echo -e "${BLUE}📊 MONITORAMENTO:${NC}"
 echo "  Status geral:     sudo supervisorctl status"
