@@ -60,19 +60,15 @@ curl -sSL https://raw.githubusercontent.com/CaioteSouza/merger_pdf/master/deploy
 
 | Documento | Público-Alvo | Descrição |
 |-----------|--------------|-----------|
-| **📋 [RESUMO_EXECUTIVO.md](./docs/RESUMO_EXECUTIVO.md)** | Gestores | Visão geral, métricas e roadmap |
 | **🚀 [DEPLOY_UBUNTU.md](./docs/DEPLOY_UBUNTU.md)** | **DevOps/SysAdmin** | **Deploy completo em Ubuntu** |
 | **📱 [MANUAL_USUARIO.md](./docs/MANUAL_USUARIO.md)** | **Usuários Finais** | **Guia de uso da ferramenta** |
 | **🔧 [DIARIO_DESENVOLVIMENTO.md](./docs/DIARIO_DESENVOLVIMENTO.md)** | **Desenvolvedores** | **Histórico técnico e decisões** |
-| **📝 [CHANGELOG.md](./docs/CHANGELOG.md)** | Todos | Histórico de versões |
-| **🤝 [CONTRIBUTING.md](./docs/CONTRIBUTING.md)** | Contribuidores | Guia de contribuição |
 
 ### 🎯 **Acesso Rápido por Necessidade**
 
 - **🚀 Quero fazer deploy**: → [`DEPLOY_UBUNTU.md`](./docs/DEPLOY_UBUNTU.md)
 - **📱 Quero usar a ferramenta**: → [`MANUAL_USUARIO.md`](./docs/MANUAL_USUARIO.md)  
 - **🔧 Quero entender o código**: → [`DIARIO_DESENVOLVIMENTO.md`](./docs/DIARIO_DESENVOLVIMENTO.md)
-- **📊 Quero visão executiva**: → [`RESUMO_EXECUTIVO.md`](./docs/RESUMO_EXECUTIVO.md)
 
 ---
 
@@ -161,7 +157,7 @@ curl -sSL https://raw.githubusercontent.com/CaioteSouza/merger_pdf/master/deploy
 
 ### 📞 **Canais de Suporte**
 - **💬 GitHub Issues**: Para bugs e melhorias
-- **📚 Documentação**: 6 guias especializados em `docs/`
+- **📚 Documentação**: 3 guias especializados em `docs/`
 - **🛠️ Scripts**: Ferramentas automáticas em `scripts/`
 
 ---
@@ -171,7 +167,7 @@ curl -sSL https://raw.githubusercontent.com/CaioteSouza/merger_pdf/master/deploy
 ### ✅ **Versão Atual: 2.0**
 - **📊 Funcionalidades**: 15+ implementadas
 - **📁 Estrutura**: Totalmente organizada
-- **📚 Documentação**: 6 guias completos
+- **📚 Documentação**: 3 guias completos
 - **🐧 Deploy Ubuntu**: 100% automatizado
 - **🧹 Código**: Limpo e otimizado
 
@@ -203,14 +199,6 @@ curl -sSL https://raw.githubusercontent.com/CaioteSouza/merger_pdf/master/deploy
 MIT License - Uso livre para fins educacionais e comerciais
 Copyright (c) 2025 PDF Merger Project
 ```
-
-### 🤝 **Como Contribuir**
-1. 🍴 Fork o repositório
-2. 🌿 Crie uma branch: `git checkout -b feature/nova-funcionalidade`
-3. 💻 Faça suas alterações
-4. ✅ Teste suas mudanças
-5. 📤 Submit um Pull Request
-
 ---
 
 <div align="center">
