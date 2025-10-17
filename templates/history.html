@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+{% block title %}PDF Merger - Histórico{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>
+                <i class="fas fa-history text-primary"></i> Histórico de PDFs Unidos
+            </h2>
+            <a href="{{ url_for('index') }}" class="btn-custom-primary">
+                <i class="fas fa-plus"></i> Unir Novos PDFs
+            </a>
+        </div>
+
+        {% if merged_pdfs %}
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th><i class="fas fa-file-pdf"></i> Arquivo</th>
+                                    <th><i class="fas fa-files-o"></i> Arquivos Originais</th>
+                                    <th><i class="fas fa-file-alt"></i> Páginas</th>
+                                    <th><i class="fas fa-hdd"></i> Tamanho</th>
+                                    <th><i class="fas fa-calendar"></i> Data</th>
+                                    <th><i class="fas fa-cogs"></i> Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for pdf in merged_pdfs %}
+                                <tr>
+                                    <td>
+                                        <strong>{{ pdf.filename }}</strong>
+                                    </td>
+                                    <td>
+                                        <small class="text-muted">{{ pdf.original_files }}</small>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-info">{{ pdf.total_pages }} páginas</span>
+                                    </td>
+                                    <td>
+                                        {{ format_file_size(pdf.file_size) }}
+                                    </td>
+                                    <td>
+                                        <small>{{ pdf.created_at }}</small>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm" role="group">
+                                            <a href="{{ url_for('download_pdf', pdf_id=pdf.id) }}" 
+                                               class="btn btn-download" title="Download">
+                                                <i class="fas fa-download"></i>
+                                            </a>
+                                            <button type="button" class="btn btn-delete" 
+                                                    data-pdf-id="{{ pdf.id }}" 
+                                                    data-pdf-filename="{{ pdf.filename }}"
+                                                    onclick="confirmDelete(this.dataset.pdfId, this.dataset.pdfFilename)" 
+                                                    title="Excluir">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estatísticas do Histórico -->
+            <div class="row mt-4">
+                <div class="col-md-3">
+                    <div class="card text-center bg-primary text-white">
+                        <div class="card-body">
+                            <h4>{{ merged_pdfs|length }}</h4>
+                            <small>PDFs no Histórico</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-center bg-success text-white">
+                        <div class="card-body">
+                            <h4>{{ merged_pdfs|sum(attribute='total_pages') }}</h4>
+                            <small>Total de Páginas</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-center bg-info text-white">
+                        <div class="card-body">
+                            <h4>{{ format_file_size(merged_pdfs|sum(attribute='file_size')) }}</h4>
+                            <small>Tamanho Total</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-center bg-warning text-white">
+                        <div class="card-body">
+                            <h4>{{ (merged_pdfs|sum(attribute='total_pages') / merged_pdfs|length)|round(1) if merged_pdfs|length > 0 else 0 }}</h4>
+                            <small>Média de Páginas</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="text-center py-5">
+                <i class="fas fa-file-pdf fa-5x text-muted mb-3"></i>
+                <h3 class="text-muted">Nenhum PDF unido ainda</h3>
+                <p class="text-muted">Comece unindo seus primeiros arquivos PDF!</p>
+                <a href="{{ url_for('index') }}" class="btn-custom-primary btn-lg">
+                    <i class="fas fa-plus"></i> Unir PDFs
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Modal de Confirmação -->
+<div class="modal fade" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmar Exclusão</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza que deseja excluir o arquivo <strong id="fileToDelete"></strong>?</p>
+                <p class="text-danger"><small>Esta ação não pode ser desfeita.</small></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <form id="deleteForm" method="POST" style="display: inline;">
+                    <button type="submit" class="btn-delete">
+                        <i class="fas fa-trash"></i> Excluir
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function confirmDelete(pdfId, filename) {
+        document.getElementById('fileToDelete').textContent = filename;
+        document.getElementById('deleteForm').action = `{{ url_for('delete_pdf', pdf_id=0) }}`.replace('0', pdfId);
+        
+        const modal = new bootstrap.Modal(document.getElementById('deleteModal'));
+        modal.show();
+    }
+
+    function formatFileSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+</script>
+{% endblock %}

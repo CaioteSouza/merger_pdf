@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+
+{% block title %}PDF Merger - Unir PDFs{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <div class="text-center mb-5">
+            <h1 class="display-4 text-primary">
+                <i class="fas fa-file-pdf"></i> PDF Merger
+            </h1>
+            <p class="lead">Una múltiplos arquivos PDF em um único documento</p>
+        </div>
+
+        <!-- Área de Upload -->
+        <div class="card shadow">
+            <div class="card-body">
+                <form id="uploadForm" action="{{ url_for('upload_files') }}" method="post" enctype="multipart/form-data">
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-cloud-upload-alt fa-3x text-primary mb-3"></i>
+                        <h4>Arraste e solte os arquivos PDF aqui</h4>
+                        <p class="text-muted">ou clique para selecionar arquivos</p>
+                        <input type="file" id="fileInput" name="files[]" multiple accept=".pdf" class="d-none">
+                        <button type="button" class="btn btn-primary" onclick="document.getElementById('fileInput').click()">
+                            <i class="fas fa-folder-open"></i> Selecionar Arquivos
+                        </button>
+                    </div>
+
+                    <!-- Lista de Arquivos -->
+                    <div id="fileList" class="file-list mt-4" style="display: none;">
+                        <h5>Arquivos Selecionados:</h5>
+                        <div id="files"></div>
+                        <div class="text-center mt-3">
+                            <button type="submit" class="btn btn-success btn-lg">
+                                <i class="fas fa-compress-arrows-alt"></i> Unir PDFs
+                            </button>
+                            <button type="button" class="btn btn-secondary ms-2" onclick="clearFiles()">
+                                <i class="fas fa-trash"></i> Limpar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Instruções -->
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fas fa-info-circle text-info"></i> Como usar:
+                </h5>
+                <ol>
+                    <li>Selecione ou arraste múltiplos arquivos PDF</li>
+                    <li>Os arquivos serão unidos na ordem selecionada</li>
+                    <li>Clique em "Unir PDFs" para processar</li>
+                    <li>O arquivo unido será salvo automaticamente</li>
+                    <li>Acesse o histórico para baixar ou gerenciar seus arquivos</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Estatísticas -->
+<div class="row mt-5">
+    <div class="col-md-4">
+        <div class="card stats-card text-center">
+            <div class="card-body">
+                <i class="fas fa-file-pdf fa-2x mb-2"></i>
+                <h3 id="totalMerged">-</h3>
+                <p>PDFs Unidos</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card stats-card text-center">
+            <div class="card-body">
+                <i class="fas fa-file-alt fa-2x mb-2"></i>
+                <h3 id="totalPages">-</h3>
+                <p>Total de Páginas</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card stats-card text-center">
+            <div class="card-body">
+                <i class="fas fa-hdd fa-2x mb-2"></i>
+                <h3 id="totalSize">-</h3>
+                <p>Tamanho Total</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    let selectedFiles = [];
+
+    // Drag and Drop
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInput = document.getElementById('fileInput');
+    const fileList = document.getElementById('fileList');
+    const filesDiv = document.getElementById('files');
+
+    uploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadArea.classList.add('dragover');
+    });
+
+    uploadArea.addEventListener('dragleave', () => {
+        uploadArea.classList.remove('dragover');
+    });
+
+    uploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadArea.classList.remove('dragover');
+        const files = Array.from(e.dataTransfer.files).filter(file => file.type === 'application/pdf');
+        handleFiles(files);
+    });
+
+    fileInput.addEventListener('change', (e) => {
+        handleFiles(Array.from(e.target.files));
+    });
+
+    function handleFiles(files) {
+        selectedFiles = [...selectedFiles, ...files];
+        updateFileList();
+    }
+
+    function updateFileList() {
+        if (selectedFiles.length === 0) {
+            fileList.style.display = 'none';
+            return;
+        }
+
+        fileList.style.display = 'block';
+        filesDiv.innerHTML = '';
+
+        selectedFiles.forEach((file, index) => {
+            const fileDiv = document.createElement('div');
+            fileDiv.className = 'file-item';
+            fileDiv.innerHTML = `
+                <div>
+                    <i class="fas fa-file-pdf text-danger"></i>
+                    <strong>${file.name}</strong>
+                    <small class="text-muted">(${formatFileSize(file.size)})</small>
+                </div>
+                <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeFile(${index})">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            filesDiv.appendChild(fileDiv);
+        });
+    }
+
+    function removeFile(index) {
+        selectedFiles.splice(index, 1);
+        updateFileList();
+    }
+
+    function clearFiles() {
+        selectedFiles = [];
+        fileInput.value = '';
+        updateFileList();
+    }
+
+    function formatFileSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+
+    // Submissão do formulário
+    document.getElementById('uploadForm').addEventListener('submit', (e) => {
+        if (selectedFiles.length < 2) {
+            e.preventDefault();
+            alert('Selecione pelo menos 2 arquivos PDF!');
+            return;
+        }
+
+        // Criar um novo FormData com os arquivos selecionados
+        const formData = new FormData();
+        selectedFiles.forEach(file => {
+            formData.append('files[]', file);
+        });
+
+        // Enviar via fetch para melhor controle
+        e.preventDefault();
+        
+        const submitBtn = e.target.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processando...';
+
+        fetch('{{ url_for("upload_files") }}', {
+            method: 'POST',
+            body: formData
+        }).then(response => {
+            if (response.ok) {
+                window.location.href = '{{ url_for("history") }}';
+            } else {
+                alert('Erro ao processar arquivos!');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-compress-arrows-alt"></i> Unir PDFs';
+            }
+        }).catch(error => {
+            alert('Erro ao enviar arquivos!');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-compress-arrows-alt"></i> Unir PDFs';
+        });
+    });
+
+    // Carregar estatísticas
+    fetch('{{ url_for("api_stats") }}')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('totalMerged').textContent = data.total_merged;
+            document.getElementById('totalPages').textContent = data.total_pages;
+            document.getElementById('totalSize').textContent = formatFileSize(data.total_size);
+        });
+</script>
+{% endblock %}

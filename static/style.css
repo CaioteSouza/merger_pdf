@@ -1,0 +1,368 @@
+/* ========================================
+   PDF MERGER - ESTILOS CUSTOMIZADOS
+   ======================================== */
+
+/* ========================================
+   CORES GLOBAIS E LAYOUT BASE
+   ======================================== */
+
+body, html {
+    background-color: #f0f0f0;
+}
+
+/* ========================================
+   HEADER E NAVEGAÇÃO
+   ======================================== */
+
+.navbar {
+    background: #fff !important;
+    border-bottom: 1px solid #dee2e6;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-brand {
+    color: #155229 !important;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.navbar-brand img {
+    height: 40px;
+}
+
+.navbar-nav {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.nav-link {
+    color: #155229 !important;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #1b5e20 !important;
+    background-color: #f8f9fa;
+}
+
+/* ========================================
+   TIPOGRAFIA
+   ======================================== */
+
+/* Títulos */
+h1, h2, h3, h4, h5, h6, .display-4 {
+    color: #155229 !important;
+}
+
+/* Parágrafos */
+p, .lead {
+    color: #333 !important;
+}
+
+/* Textos diversos */
+.text-muted {
+    color: #666 !important;
+}
+
+small, .small {
+    color: #666 !important;
+}
+
+/* Links */
+a {
+    color: #155229;
+}
+
+a:hover {
+    color: #1b5e20;
+}
+
+/* ========================================
+   BOTÕES PRINCIPAIS (PÁGINA INICIAL)
+   ======================================== */
+
+.btn-primary {
+    background-color: #b9f6ca !important;
+    border-color: #b9f6ca !important;
+    color: #1b5e20 !important;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    background-color: #a5d6a7 !important;
+    border-color: #a5d6a7 !important;
+    color: #1b5e20 !important;
+}
+
+.btn-success {
+    background-color: #b9f6ca !important;
+    border-color: #b9f6ca !important;
+    color: #1b5e20 !important;
+}
+
+.btn-success:hover, .btn-success:focus, .btn-success:active {
+    background-color: #a5d6a7 !important;
+    border-color: #a5d6a7 !important;
+    color: #1b5e20 !important;
+}
+
+/* ========================================
+   BOTÕES SECUNDÁRIOS
+   ======================================== */
+
+.btn-secondary {
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268 !important;
+    border-color: #5a6268 !important;
+}
+
+/* ========================================
+   BOTÕES ESPECÍFICOS DO HISTÓRICO
+   ======================================== */
+
+/* Botão de Download (Verde Bootstrap) */
+.btn-download {
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+    color: white !important;
+    font-size: 0.875rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.btn-download:hover, .btn-download:focus, .btn-download:active {
+    background-color: #218838 !important;
+    border-color: #1e7e34 !important;
+    color: white !important;
+}
+
+/* Botão de Excluir (Vermelho Bootstrap) */
+.btn-delete {
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+    color: white !important;
+    font-size: 0.875rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.btn-delete:hover, .btn-delete:focus, .btn-delete:active {
+    background-color: #c82333 !important;
+    border-color: #bd2130 !important;
+    color: white !important;
+}
+
+/* Botão Personalizado Verde Claro */
+.btn-custom-primary {
+    background-color: #b9f6ca !important;
+    border: 1px solid #b9f6ca !important;
+    color: #1b5e20 !important;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    transition: all 0.15s ease-in-out;
+}
+
+.btn-custom-primary:hover, .btn-custom-primary:focus, .btn-custom-primary:active {
+    background-color: #a5d6a7 !important;
+    border-color: #a5d6a7 !important;
+    color: #1b5e20 !important;
+    text-decoration: none;
+}
+
+.btn-custom-primary.btn-lg {
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+}
+
+/* ========================================
+   ÁREA DE UPLOAD
+   ======================================== */
+
+.upload-area {
+    border: 3px dashed #1b5e20;
+    border-radius: 10px;
+    padding: 50px;
+    text-align: center;
+    background: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.upload-area:hover {
+    border-color: #155229;
+    background: #f8fffe;
+}
+
+.upload-area.dragover {
+    border-color: #2e7d32;
+    background: #e8f5e8;
+}
+
+.upload-area h4 {
+    color: #155229 !important;
+}
+
+/* ========================================
+   LISTAS DE ARQUIVOS
+   ======================================== */
+
+.file-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.file-item {
+    background: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ========================================
+   CARDS E CONTAINERS
+   ======================================== */
+
+/* Cards Gerais */
+.card {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card-title {
+    color: #155229 !important;
+}
+
+/* Cards de Estatísticas */
+.stats-card {
+    background: #b9f6ca;
+    color: #1b5e20;
+    border-radius: 15px;
+}
+
+.stats-card h3, .stats-card p {
+    color: #1b5e20 !important;
+}
+
+/* ========================================
+   BADGES E ALERTAS
+   ======================================== */
+
+.badge {
+    background-color: #1b5e20 !important;
+}
+
+.bg-info {
+    background-color: #1b5e20 !important;
+}
+
+.alert-info {
+    background-color: #e8f5e8;
+    border-color: #c3e6cb;
+    color: #155229;
+}
+
+/* ========================================
+   TABELAS
+   ======================================== */
+
+.table-dark {
+    background-color: #1b5e20 !important;
+}
+
+.table-dark th {
+    border-color: #2e7d32 !important;
+    color: white !important;
+}
+
+/* ========================================
+   CARDS COLORIDOS (HISTÓRICO)
+   ======================================== */
+
+.bg-primary {
+    background-color: #2a597c !important;
+}
+
+.bg-success {
+    background-color: #b9f6ca !important;
+}
+
+.bg-warning {
+    background-color: #ff9800 !important;
+}
+
+/* Texto branco nos cards de estatísticas */
+.bg-primary h4, .bg-primary small,
+.bg-warning h4, .bg-warning small,
+.bg-info h4, .bg-info small {
+    color: white !important;
+}
+
+/* ========================================
+   ÍCONES E ELEMENTOS ESPECIAIS
+   ======================================== */
+
+.text-primary {
+    color: #155229 !important;
+}
+
+.text-info {
+    color: #155229 !important;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.footer {
+    background-color: #ffffff;
+    border-top: 1px solid #dee2e6;
+    margin-top: 50px;
+}
+
+/* ========================================
+   RESPONSIVIDADE E MOBILE
+   ======================================== */
+
+@media (max-width: 768px) {
+    .navbar-brand {
+        position: static;
+        transform: none;
+    }
+    
+    .navbar-nav {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    
+    .upload-area {
+        padding: 30px 20px;
+    }
+    
+    .stats-card {
+        margin-bottom: 15px;
+    }
+}
