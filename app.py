@@ -6,9 +6,21 @@ from flask import Flask, request, render_template, redirect, url_for, flash, sen
 from werkzeug.utils import secure_filename
 from pypdf import PdfWriter, PdfReader
 import io
+import config
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'sua_chave_secreta_aqui'
+
+# Configurações do Flask usando config.py
+app.config['SECRET_KEY'] = config.SECRET_KEY
+app.config['UPLOAD_FOLDER'] = config.UPLOAD_FOLDER
+app.config['MERGED_FOLDER'] = config.MERGED_FOLDER
+app.config['MAX_CONTENT_LENGTH'] = config.MAX_CONTENT_LENGTH
+app.config['PERMANENT_SESSION_LIFETIME'] = config.PERMANENT_SESSION_LIFETIME
+
+# Configurações de segurança
+app.config['SESSION_COOKIE_SECURE'] = config.SESSION_COOKIE_SECURE
+app.config['SESSION_COOKIE_HTTPONLY'] = config.SESSION_COOKIE_HTTPONLY
+app.config['SESSION_COOKIE_SAMESITE'] = config.SESSION_COOKIE_SAMESITE
 
 def format_file_size(size_bytes):
     """Formata o tamanho do arquivo em formato legível"""
@@ -22,16 +34,13 @@ def format_file_size(size_bytes):
 
 # Registrar função para uso nos templates
 app.jinja_env.globals.update(format_file_size=format_file_size)
-app.config['UPLOAD_FOLDER'] = 'uploads'
-app.config['MERGED_FOLDER'] = 'merged_pdfs'
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
 
 # Criar diretórios se não existirem
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 os.makedirs(app.config['MERGED_FOLDER'], exist_ok=True)
 
 # Configuração do banco de dados
-DATABASE = 'pdf_merger.db'
+DATABASE = config.DATABASE_NAME
 
 def init_db():
     """Inicializa o banco de dados"""
@@ -60,8 +69,11 @@ def get_db_connection():
     return conn
 
 def allowed_file(filename):
-    """Verifica se o arquivo é um PDF"""
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() == 'pdf'
+    """Verifica se o arquivo tem extensão permitida"""
+    if '.' not in filename:
+        return False
+    extension = filename.rsplit('.', 1)[1].lower()
+    return extension in config.ALLOWED_EXTENSIONS
 
 def get_pdf_page_count(file_path):
     """Retorna o número de páginas de um PDF"""
@@ -116,10 +128,19 @@ def upload_files():
         flash('Selecione pelo menos 2 arquivos PDF!')
         return redirect(url_for('index'))
     
-    # Valida se todos os arquivos são PDFs
+    # Valida se todos os arquivos são PDFs e não excedem o tamanho máximo
     pdf_paths = []
     for file in files:
         if file and allowed_file(file.filename):
+            # Verificar tamanho do arquivo
+            file.seek(0, 2)  # Vai para o final do arquivo
+            file_size = file.tell()
+            file.seek(0)  # Volta para o início
+            
+            if file_size > config.MAX_FILE_SIZE:
+                flash(f'Arquivo {file.filename} excede o tamanho máximo permitido ({format_file_size(config.MAX_FILE_SIZE)})!')
+                return redirect(url_for('index'))
+            
             filename = secure_filename(file.filename)
             file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(file_path)
@@ -225,4 +246,4 @@ def api_stats():
 
 if __name__ == '__main__':
     init_db()
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=config.DEBUG, host=config.HOST, port=config.PORT)
